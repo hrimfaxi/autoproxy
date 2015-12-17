@@ -37,7 +37,7 @@
       if (build)
         text += ", build " + build;
       text += ".";
-      document.write("<p>" + text + "</p>");
+      document.documentElement.appendChild("<p>" + text + "</p>");
     } catch (e) {}
 
     let messages = {};
@@ -54,7 +54,7 @@
 
     if (messages.length)
     {
-      document.write("<p>Errors related to AutoProxy:</p>");
+      document.documentElement.appendChild("<p>Errors related to AutoProxy:</p>");
 
       for each (let message in messages)
       {
@@ -66,14 +66,14 @@
         if (message.sourceName)
           html += "Location: " + encodeHTML(message.sourceName) + " line " + message.lineNumber + "<br>";
         html = html.replace(/(<br>)+$/, "");
-        document.write("<div class='" + type + "'>" +
+        document.documentElement.appendChild("<div class='" + type + "'>" +
                        html +
                        "</div>");
       }
     }
     else
     {
-      document.write("<p>No errors found.</p>");
+      document.documentElement.appendChild("<p>No errors found.</p>");
     }
 
     function encodeHTML(string)
