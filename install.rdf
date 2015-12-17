@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
 
     <em:id>autoproxy-ng@github.com</em:id>
-    <em:version>0.5</em:version>
+    <em:version>0.5.0</em:version>
     <em:type>2</em:type>
 
     <!-- Target Application this extension can install into,
