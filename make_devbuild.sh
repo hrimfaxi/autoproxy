@@ -18,7 +18,7 @@ versionPlusTimestamp=$version"."$timestamp
 perl -pi -e s,"em:version.*","em:version>$versionPlusTimestamp<\/em:version>", install.rdf
 perl -pi -e s,{{VERSION}},$versionPlusTimestamp, components/AutoProxy.js
 
-zip -r autoproxy-$versionPlusTimestamp.xpi chrome components defaults install.rdf chrome.manifest icon.png
+zip -r autoproxy-ng-$versionPlusTimestamp.xpi chrome components defaults install.rdf chrome.manifest icon.png
 
 perl -pi -e s,"em:version.*","em:version>$version<\/em:version>", install.rdf
 perl -pi -e s,$versionPlusTimestamp,{{VERSION}}, components/AutoProxy.js
