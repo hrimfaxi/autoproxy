@@ -23,13 +23,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-let autoAdd;
-let result;
-let defaultLabel;
-let menupop;
-let selectedId;
-let E = function(id) { return document.getElementById(id); };
-let cE = function(tag) { return document.createElementNS(
+var autoAdd;
+var result;
+var defaultLabel;
+var menupop;
+var selectedId;
+var E = function(id) { return document.getElementById(id); };
+var cE = function(tag) { return document.createElementNS(
         "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", tag); };
 
 function init()
