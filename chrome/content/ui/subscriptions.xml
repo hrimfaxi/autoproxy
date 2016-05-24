@@ -2,7 +2,7 @@
 
 <subscriptions>
   <subscription title="gfwList (P.R.China)"
-                url="https://raw.githubusercontent.com/Duncej/gfwlist-1/master/gfwlist.txt"
-                homepage="https://github.com/Duncej/gfwlist-1" />
+                url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
+                homepage="https://github.com/gfwlist/gfwlist" />
 </subscriptions>
 

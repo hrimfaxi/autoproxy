@@ -1,7 +1,7 @@
 #!/bin/sh
 
-BUILD=$(git describe --tag)
-VERSION=$(grep version package.json | cut -d\" -f4)
+GITTAG=$(git describe --tag)
 
-sed -i "s/{{VERSION}}/${VERSION}/g" components/AutoProxy.js
-sed -i "s/{{BUILD}}/${BUILD}/g" components/AutoProxy.js
+sed -i "s/{{VERSION}}/${GITTAG}/g" package.json
+sed -i "s/{{VERSION}}/${GITTAG}/g" components/AutoProxy.js
+sed -i "s/{{BUILD}}/${GITTAG}/g" components/AutoProxy.js
