@@ -641,7 +641,7 @@ function makeProxyItems(popup)
 
 function report2gfwList()
 {
-  aup.loadInBrowser("https://gfwlist.autoproxy.org/report/?url=" + aupHooks.getBrowser().currentURI.spec);
+  aup.loadInBrowser("https://github.com/gfwlist/gfwlist/issues/new?title=" + aupHooks.getBrowser().currentURI.spec);
 }
 
 function chooseProxy4RuleGroups(flagItem)
