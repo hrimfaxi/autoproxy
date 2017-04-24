@@ -1,0 +1,7 @@
+gen_rev.sh
+*.zip
+*.xpi
+.git
+.*.sw?
+.gitignore
+.jpmignore
