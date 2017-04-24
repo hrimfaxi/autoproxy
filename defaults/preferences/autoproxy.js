@@ -1,6 +1,7 @@
 // For description of these values see https://autoproxy.org/preferences
 
 pref("network.proxy.type", 5);
+pref("network.proxy.socks_remote_dns", true);
 pref("extensions.autoproxy.clearStatsOnHistoryPurge", true);
 pref("extensions.autoproxy.currentVersion", "0.0");
 pref("extensions.autoproxy.defaultstatusbaraction", 3);
