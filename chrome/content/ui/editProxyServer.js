@@ -190,8 +190,8 @@ function saveProxyServerSettings()
     if ( /;;/.test(temp) ) continue;
 
     pDs = pDs.firstChild; // pDs -> 'http'
-    if (pDs.selected) ; // http is default
-    else if (pDs.nextSibling.selected) temp += "socks4";
+    /* if (pDs.selected) ; // http is default */
+    if (pDs.nextSibling.selected) temp += "socks4";
       else temp += "socks"; // socks means socks5
 
     // 127.0.0.1 is default
