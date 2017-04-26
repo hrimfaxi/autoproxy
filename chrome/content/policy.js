@@ -94,8 +94,9 @@ var policy =
     var match = null, docDomain = "extension", thirdParty = false, contentType = 3;
     var wnd, node, locationText = location.spec;
 
-    if (location == this.ContentURI) {
-      wnd = this.Wnd; node = this.Node; contentType = this.ContentType;
+    wnd = this.Wnd;
+    if (wnd && location == this.ContentURI) {
+      node = this.Node; contentType = this.ContentType;
 
       // Data loaded by plugins should be attached to the document
       if ((contentType == this.type.OTHER || contentType == this.type.OBJECT_SUBREQUEST) && node instanceof Element)
@@ -122,7 +123,7 @@ var policy =
     //   * no sidebar window can be used to display extension's http request;
     //   * shouldLoad() doesn't check extension's request, any way to do this?
     //     * just like onChannelRedirect() did for 301/302 redirection.
-    if (location == this.ContentURI) {
+    if (wnd && location == this.ContentURI) {
       var data = RequestList.getDataForWindow(wnd);
       data.addNode(node, contentType, docDomain, thirdParty, locationText, match);
     }
