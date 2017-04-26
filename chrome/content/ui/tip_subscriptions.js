@@ -155,7 +155,7 @@ function handleKeyPress(e) {
 
 function handleCommand(event)
 {
-  let scrollBox = document.getElementById("subscriptionsScrollbox")
+  var scrollBox = document.getElementById("subscriptionsScrollbox")
                           .boxObject
                           .QueryInterface(Ci.nsIScrollBoxObject);
   scrollBox.ensureElementIsVisible(event.target);
