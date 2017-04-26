@@ -492,7 +492,7 @@ function importList()
   {
     saveDefaultDir(picker.file.parent.QueryInterface(Ci.nsILocalFile));
     let fileStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
-    fileStream.init(picker.file, 0x01, 0444, 0);
+    fileStream.init(picker.file, 0x01, 0o0444, 0);
 
     let stream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
     stream.init(fileStream, "UTF-8", 16384, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
@@ -598,7 +598,7 @@ function exportList()
     try
     {
       let fileStream = Cc["@mozilla.org/network/file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-      fileStream.init(picker.file, 0x02 | 0x08 | 0x20, 0644, 0);
+      fileStream.init(picker.file, 0x02 | 0x08 | 0x20, 0o0644, 0);
 
       let stream = Cc["@mozilla.org/intl/converter-output-stream;1"].createInstance(Ci.nsIConverterOutputStream);
       stream.init(fileStream, "UTF-8", 16384, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);

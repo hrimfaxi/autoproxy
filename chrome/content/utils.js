@@ -141,7 +141,7 @@ function getLineBreak() {
       var dirService = Cc["@mozilla.org/file/directory_service;1"].createInstance(Ci.nsIProperties);
       var prefFile = dirService.get("PrefF", Ci.nsIFile);
       var inputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
-      inputStream.init(prefFile, 0x01, 0444, 0);
+      inputStream.init(prefFile, 0x01, 0o0444, 0);
 
       var scriptableStream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream);
       scriptableStream.init(inputStream);

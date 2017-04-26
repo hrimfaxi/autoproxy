@@ -388,7 +388,7 @@ var filterStorage =
       if (this.file && this.file.exists())
       {
         var fileStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
-        fileStream.init(this.file, 0x01, 0444, 0);
+        fileStream.init(this.file, 0x01, 0o0444, 0);
 
         stream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
         stream.init(fileStream, "UTF-8", 16384, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
@@ -536,7 +536,7 @@ var filterStorage =
 
     // Make sure the file's parent directory exists
     try {
-      this.file.parent.create(this.file.DIRECTORY_TYPE, 0755);
+      this.file.parent.create(this.file.DIRECTORY_TYPE, 0o0755);
     } catch (e) {}
 
     let tempFile = this.file.clone();
@@ -544,7 +544,7 @@ var filterStorage =
     let stream;
     try {
       let fileStream = Cc["@mozilla.org/network/file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-      fileStream.init(tempFile, 0x02 | 0x08 | 0x20, 0644, 0);
+      fileStream.init(tempFile, 0x02 | 0x08 | 0x20, 0o0644, 0);
 
       stream = Cc["@mozilla.org/intl/converter-output-stream;1"].createInstance(Ci.nsIConverterOutputStream);
       stream.init(fileStream, "UTF-8", 16384, Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
