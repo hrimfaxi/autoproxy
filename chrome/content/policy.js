@@ -92,26 +92,30 @@ var policy =
    */
   autoMatching: function(location) {
     var match = null, docDomain = "extension", thirdParty = false, contentType = 3;
-    var wnd, node, locationText = location.spec;
+    var wnd = null, node, locationText = location.spec;
 
-    wnd = this.Wnd;
-    if (wnd && location == this.ContentURI) {
-      node = this.Node; contentType = this.ContentType;
+    if (location == this.ContentURI) {
+      wnd = this.Wnd; node = this.Node; contentType = this.ContentType;
+      if (wnd !== null) {
+        node = this.Node;
 
-      // Data loaded by plugins should be attached to the document
-      if ((contentType == this.type.OTHER || contentType == this.type.OBJECT_SUBREQUEST) && node instanceof Element)
-        node = node.ownerDocument;
+        // Data loaded by plugins should be attached to the document
+        if ((contentType == this.type.OTHER || contentType == this.type.OBJECT_SUBREQUEST) && node instanceof Element)
+          node = node.ownerDocument;
 
-      // Fix type for background images
-      if (contentType == this.type.IMAGE && node.nodeType == Node.DOCUMENT_NODE)
-        contentType = this.type.BACKGROUND;
+        // Fix type for background images
+        if (contentType == this.type.IMAGE && node.nodeType == Node.DOCUMENT_NODE)
+          contentType = this.type.BACKGROUND;
 
-      // Fix type for objects misrepresented as frames or images
-      if (contentType != this.type.OBJECT && (node instanceof Ci.nsIDOMHTMLObjectElement || node instanceof Ci.nsIDOMHTMLEmbedElement))
-        contentType = this.type.OBJECT;
+        // Fix type for objects misrepresented as frames or images
+        if (contentType != this.type.OBJECT && (node instanceof Ci.nsIDOMHTMLObjectElement || node instanceof Ci.nsIDOMHTMLEmbedElement))
+          contentType = this.type.OBJECT;
 
-      docDomain = wnd.location.host;
-      thirdParty = this.isThirdParty(location, docDomain);
+        docDomain = wnd.location.host;
+        thirdParty = this.isThirdParty(location, docDomain);
+      } else {
+        docDomain = location.host;
+      }
     }
 
     match = whitelistMatcher.matchesAny(locationText, this.typeDescr[contentType] || "", docDomain, thirdParty);
@@ -123,7 +127,7 @@ var policy =
     //   * no sidebar window can be used to display extension's http request;
     //   * shouldLoad() doesn't check extension's request, any way to do this?
     //     * just like onChannelRedirect() did for 301/302 redirection.
-    if (wnd && location == this.ContentURI) {
+    if (wnd !== null) {
       var data = RequestList.getDataForWindow(wnd);
       data.addNode(node, contentType, docDomain, thirdParty, locationText, match);
     }
